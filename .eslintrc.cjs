@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
     es2020: true,
     //remove the module unknown in the prritier config
-    // node: true,
+    node: true,
   },
   extends: [
     "eslint:recommended",
