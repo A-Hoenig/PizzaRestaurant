@@ -122,6 +122,15 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+          <input
+            type="hidden"
+            name="position"
+            value={
+              position.longitude && position.latitude
+                ? `${position.latitude},${position.longitude}`
+                : ""
+            }
+          />
           <Button disabled={isSubmitting} type="primary">
             {isSubmitting
               ? "Placing order ... "
@@ -148,7 +157,6 @@ export async function action({ request }) {
   if (Object.keys(errors).length > 0) return errors;
 
   // form data ok:
-  //
 
   const newOrder = await createOrder(order);
   store.dispatch(clearCart());
